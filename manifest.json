@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "CleanSlate - A Minimalist Homepage Extension for a Fresh Start",
+  "version": "1.0",
+  "description": "CleanSlate transforms your browsing experience with a distraction-free, minimalist design, offering full-screen mode, a built-in to-do list, notes, and extensive customization options. Stay organized, focused, and productive, all from a beautifully simple homepage",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
