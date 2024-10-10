@@ -3,9 +3,11 @@
 # 🌟 CleanSlate - A Minimalist Homepage Extension for a Fresh Start
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/HackStyx/clean-slate/build.yml?branch=main&label=build&logo=github)](https://github.com/HackStyx/clean-slate/actions) 
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/clean-slate-homepage?logo=Deployment+Status&name=Deployment+Status)
 [![Version](https://img.shields.io/github/package-json/v/HackStyx/clean-slate?label=version)](https://github.com/HackStyx/clean-slate/releases)
 [![License: MIT](https://img.shields.io/github/license/HackStyx/clean-slate?logo=github)](LICENSE.md)
 [![Contributors](https://img.shields.io/github/contributors/HackStyx/clean-slate?color=blue)](https://github.com/HackStyx/clean-slate/graphs/contributors)
+
 
 Transform your browser's new tab into a personalized, motivational dashboard with **CleanSlate**, a sleek and minimalist React-based Chrome extension!
 
