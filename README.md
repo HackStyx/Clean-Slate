@@ -2,17 +2,21 @@
 
 # 🌟 CleanSlate - A Minimalist Homepage Extension for a Fresh Start
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/HackStyx/clean-slate/build.yml?branch=main&label=build&logo=github)](https://github.com/HackStyx/clean-slate/actions) 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/HackStyx/clean-slate/codeql.yml?branch=main&label=build&logo=github)](https://github.com/HackStyx/clean-slate/actions) 
 ![Vercel Deploy](https://deploy-badge.vercel.app/vercel/clean-slate-homepage?logo=Deployment+Status&name=Deployment+Status)
+[![CodeQL](https://github.com/HackStyx/clean-slate/actions/workflows/codeql.yml/badge.svg)](https://github.com/HackStyx/clean-slate/actions)
 [![Version](https://img.shields.io/github/package-json/v/HackStyx/clean-slate?label=version)](https://github.com/HackStyx/clean-slate/releases)
-[![License: MIT](https://img.shields.io/github/license/HackStyx/clean-slate?logo=github)](LICENSE.md)
+[![License: MPL-2.0](https://img.shields.io/github/license/HackStyx/clean-slate?logo=github)](LICENSE.md)
 [![Contributors](https://img.shields.io/github/contributors/HackStyx/clean-slate?color=blue)](https://github.com/HackStyx/clean-slate/graphs/contributors)
+![Platform Support](https://img.shields.io/badge/platform-Chrome%20%7C%20Edge-blue)
+
 
 
 Transform your browser's new tab into a personalized, motivational dashboard with **CleanSlate**, a sleek and minimalist React-based Chrome extension!
 
 Test It Out : [CleanState](https://clean-slate-homepage.vercel.app/)
 ---
+![image](https://github.com/user-attachments/assets/e2662acc-0382-4188-b347-915dba014484)
 
 ## 🚀 Features
 
@@ -87,15 +91,6 @@ Run the test suite with:
 - `TodoList.js`: Todo list component (lines 1-105)
 - `FullscreenToggle.js`: Fullscreen mode toggle (lines 1-23)
 
----
-
-## 🚀 Deployment
-
-### 🚧 Workflow Status
-
-[![CI/CD](https://github.com/HackStyx/clean-slate/actions/workflows/main.yml/badge.svg)](https://github.com/HackStyx/clean-slate/actions)
-
-**Automatic deployments** are triggered by GitHub Actions upon every push to the main branch.
 
 ---
 
@@ -107,7 +102,7 @@ We welcome contributions! Please follow the steps outlined in our [Contributing 
 
 ## 📜 License
 
-This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MPL-2.0 License. See the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 
