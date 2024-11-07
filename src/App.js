@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { FileText, BarChart2, Settings } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStickyNote, faTasks, faCog } from '@fortawesome/free-solid-svg-icons';
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import FullscreenToggle from "./components/FullscreenToggle";
@@ -14,10 +15,13 @@ function App() {
     localStorage.getItem("userName") || "Prince"
   );
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showNotes, setShowNotes] = useState(false);
+  const [showNotes, setShowNotes] = useState(localStorage.getItem('isPinned') === 'true');
   const [showTodoList, setShowTodoList] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [quote, setQuote] = useState("");
+  const [searchBarPosition, setSearchBarPosition] = useState(localStorage.getItem('searchBarPosition') || 'default');
+  const searchBarRef = useRef(null);
+  const [searchBarSize, setSearchBarSize] = useState(localStorage.getItem('searchBarSize') || 'medium');
 
   const generateRandomGradient = () => {
     const colors = [
@@ -34,8 +38,13 @@ function App() {
   };
 
   useEffect(() => {
-    // Generate gradient once when component mounts
-    setBackgroundGradient(generateRandomGradient());
+    const savedBackgroundOption = localStorage.getItem('backgroundOption') || 'default';
+    const savedCustomGradient = localStorage.getItem('customGradient') || '#e63946,#f1faee';
+    if (savedBackgroundOption === 'custom') {
+      setBackgroundGradient(`linear-gradient(to bottom right, ${savedCustomGradient})`);
+    } else {
+      setBackgroundGradient(generateRandomGradient());
+    }
   }, []);
   
   useEffect(() => {
@@ -44,7 +53,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Array of motivational quotes
     const quotes = [
       "Time goes on. So whatever you're going to do, do it. Do it now. Don't wait.",
       "Your time is limited, so don't waste it living someone else's life.",
@@ -97,8 +105,28 @@ function App() {
       "Success doesn't just find you. You have to go out and get it.",
     ];
 
-    // Select a random quote when the component is mounted
     setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+  }, []);
+
+  useEffect(() => {
+    const isPinned = localStorage.getItem('isPinned') === 'true';
+    if (isPinned) {
+      setShowNotes(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === 'k') {
+        e.preventDefault();
+        searchBarRef.current.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const greeting = () => {
@@ -130,44 +158,67 @@ function App() {
     >
       {/* Header */}
       <div className="flex justify-between items-center mb-40">
-        <div className="flex-grow max-w-md">
-          <SearchBar />
-        </div>
-        <div className="flex space-x-4">
+        {searchBarPosition === 'default' && (
+          <div className="flex-grow max-w-md">
+            <SearchBar ref={searchBarRef} size={searchBarSize} />
+          </div>
+        )}
+        <div className="flex space-x-6 ml-auto text-shadow">
           <FullscreenToggle
             isFullscreen={isFullscreen}
             setIsFullscreen={setIsFullscreen}
           />
-          <FileText
-            className="cursor-pointer"
+          <FontAwesomeIcon
+            icon={faStickyNote}
+            className="cursor-pointer text-2xl"
             onClick={() => setShowNotes(!showNotes)}
           />
-          <BarChart2
-            className="cursor-pointer"
+          <FontAwesomeIcon
+            icon={faTasks}
+            className="cursor-pointer text-2xl"
             onClick={() => setShowTodoList(!showTodoList)}
           />
-          <Settings
-            className="cursor-pointer"
+          <FontAwesomeIcon
+            icon={faCog}
+            className="cursor-pointer text-2xl"
             onClick={() => setShowSettings(!showSettings)}
           />
         </div>
       </div>
 
-      {/* Main content - moved lower */}
-      <div className="text-center mt-40">
+      {/* Main content */}
+      <div className="text-center mt-40 text-shadow">
         <h1 className="greeting-line">
           <span className="greeting">{greeting()}</span>,{" "}
           <span className="name">{name}</span>
         </h1>
+        {searchBarPosition === 'centered' && (
+          <div className="flex justify-center mt-6 mb-6">
+            <SearchBar ref={searchBarRef} size={searchBarSize} />
+          </div>
+        )}
         <div className="text-9xl mb-6">{formatTime(time)}</div>
         <p className="text-xl max-w-2xl mx-auto">"{quote}"</p>
       </div>
 
-      {showNotes && <Notes />}
-      {showTodoList && <TodoList />}
+      {(showNotes || localStorage.getItem('isPinned') === 'true') && (
+        <Notes 
+          onClose={() => {
+            if (localStorage.getItem('isPinned') !== 'true') {
+              setShowNotes(false);
+            }
+          }} 
+        />
+      )}
+      {showTodoList && (
+        <TodoList onClose={() => setShowTodoList(false)} />
+      )}
       {showSettings && (
         <SettingsModal
           setName={updateName}
+          setBackgroundGradient={setBackgroundGradient}
+          setSearchBarPosition={setSearchBarPosition}
+          setSearchBarSize={setSearchBarSize}
           onClose={() => setShowSettings(false)}
         />
       )}
