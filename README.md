@@ -2,6 +2,18 @@
 
 Transform your browser's new tab into a personalized, motivational dashboard with our sleek React-based Chrome extension!
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/HackStyx/clean-slate/codeql.yml?branch=main&label=build&logo=github)](https://github.com/HackStyx/clean-slate/actions) 
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/clean-slate-homepage?logo=Deployment+Status&name=Deployment+Status)
+[![CodeQL](https://github.com/HackStyx/clean-slate/actions/workflows/codeql.yml/badge.svg)](https://github.com/HackStyx/clean-slate/actions)
+[![Version](https://img.shields.io/github/package-json/v/HackStyx/clean-slate?label=version)](https://github.com/HackStyx/clean-slate/releases)
+[![License: MPL-2.0](https://img.shields.io/github/license/HackStyx/clean-slate?logo=github)](LICENSE.md)
+[![Contributors](https://img.shields.io/github/contributors/HackStyx/clean-slate?color=blue)](https://github.com/HackStyx/clean-slate/graphs/contributors)
+![Platform Support](https://img.shields.io/badge/platform-Chrome%20%7C%20Edge-blue)
+
+Demo : [CleanState](https://clean-slate-homepage.vercel.app/)
+
+Add to your Edge Browser: [EDGE ADD ON STORE](https://microsoftedge.microsoft.com/addons/detail/cleanslate-a-minimalist/ikolcbamblgjnelohjhednagmdeemicl)
+
 ## 🚀 Features
 
 - 🕰️ Real-time clock with dynamic greetings
@@ -52,12 +64,6 @@ Run the test suite with:
 - [Tailwind CSS](https://tailwindcss.com/) - Styling
 - [Lucide React](https://lucide.dev/) - Icons
 
-## 📚 Code Overview
-
-- `App.js`: Main component (lines 1-178)
-- `Notes.js`: Notepad functionality (lines 1-115)
-- `TodoList.js`: Todo list component (lines 1-105)
-- `FullscreenToggle.js`: Fullscreen mode toggle (lines 1-23)
 
 ## 🤝 Contributing
 
